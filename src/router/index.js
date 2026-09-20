@@ -3,6 +3,8 @@ import LoginView from '../views/LoginView.vue'
 import AdminDashboardView from '../views/AdminDashboardView.vue'
 import AdminRepartidoresView from '../views/AdminRepartidoresView.vue'
 import AdminPedidosView from '../views/AdminPedidosView.vue'
+import RepartidorView from '../views/RepartidorView.vue'
+import RepartidorRutaView from '../views/RepartidorRutaView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +28,16 @@ const router = createRouter({
       path: '/admin/repartidores',
       name: 'admin-repartidores',
       component: AdminRepartidoresView,
+    },
+    {
+      path: '/repartidor',
+      name: 'repartidor',
+      component: RepartidorView,
+    },
+    {
+      path: '/repartidor/ruta',
+      name: 'repartidor-ruta',
+      component: RepartidorRutaView,
     },
   ],
 })

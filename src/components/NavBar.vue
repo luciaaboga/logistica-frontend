@@ -1,10 +1,12 @@
 <script setup>
 import { useRouter, useRoute } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 
 const router = useRouter()
 const route = useRoute()
+const authStore = useAuthStore()
 
-const items = [
+const itemsAdmin = [
   {
     ruta: '/admin',
     label: 'Inicio',
@@ -21,18 +23,33 @@ const items = [
     icono: 'M3 17H5M5 17A2 2 0 1 0 9 17M5 17A2 2 0 1 1 9 17M9 17H15M15 17A2 2 0 1 0 19 17M15 17A2 2 0 1 1 19 17M19 17H21V13L18 9H14V17M14 9V13H3V6A1 1 0 0 1 4 5H13A1 1 0 0 1 14 6V9Z',
   },
 ]
+
+const itemsRepartidor = [
+  {
+    ruta: '/repartidor',
+    label: 'Mis pedidos',
+    icono: 'M3 11L12 3L21 11M5 10V20A1 1 0 0 0 6 21H9A1 1 0 0 0 10 20V15A1 1 0 0 1 11 14H13A1 1 0 0 1 14 15V20A1 1 0 0 0 15 21H18A1 1 0 0 0 19 20V10',
+  },
+  {
+    ruta: '/repartidor/ruta',
+    label: 'Mi ruta',
+    icono: 'M9 20L3 17V4L9 7M9 20L15 17M9 20V7M15 17L21 20V7L15 4M15 17V4M9 7L15 4',
+  },
+]
+
+const items = authStore.esAdmin() ? itemsAdmin : itemsRepartidor
 </script>
 
 <template>
   <nav class="bottom-nav">
     
-      <a v-for="item in items"
+    <a v-for="item in items"
       :key="item.ruta"
       class="nav-item"
       :class="{ activo: route.path === item.ruta }"
       :title="item.label"
-      @click="router.push(item.ruta)"
-    >
+      @click="router.push(item.ruta)">
+      
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path :d="item.icono" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -53,7 +70,7 @@ const items = [
   background: white;
   border-top: 1px solid #eaeaea;
   box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
-  z-index: 20;
+  z-index: 1000;
 }
 
 .nav-item {

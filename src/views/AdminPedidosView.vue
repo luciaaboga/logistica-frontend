@@ -157,7 +157,6 @@ onMounted(() => {
             >
               Ver detalle
             </button>
-
             <button
               v-if="pedido.estadoNombre !== 'Cancelado' && pedido.estadoNombre !== 'Entregado'"
               class="btn-cancelar"
@@ -322,6 +321,7 @@ onMounted(() => {
   flex-shrink: 0;
   color: #8a978b;
 }
+
 .btn-cancelar {
   background: transparent;
   border: 1.5px solid #c62828;
