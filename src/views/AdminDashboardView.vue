@@ -5,6 +5,7 @@ import { useAuthStore } from '@/stores/auth'
 import { obtenerEstiloEstado } from '@/utils/estados'
 import AppHeader from '@/components/AppHeader.vue'
 import NavBar from '@/components/NavBar.vue'
+import ChatAsistente from '@/components/ChatAsistente.vue'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
@@ -197,6 +198,7 @@ onMounted(() => {
     </main>
 
     <NavBar />
+    <ChatAsistente />   <!-- agregar acá -->
   </div>
 </template>
 
